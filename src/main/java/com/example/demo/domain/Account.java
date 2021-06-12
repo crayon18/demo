@@ -53,6 +53,8 @@ public class Account {
 
     private boolean studyEnrollmentResultByEmail;
 
+    private boolean studyEnrollmentResultByWeb;
+
     private boolean studyUpdatedByEmail;
 
     private boolean studyUpdateByWeb;

@@ -1,14 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>StudyOlle</title>
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/node_modules/summernote/dist/summernote-bs4.min.css">
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/node_modules/jdenticon/dist/jdenticon.min.js"></script>
     <style>
         .container {
@@ -54,8 +58,10 @@
             <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    <svg data-jdenticon-value="user127" th:data-jdenticon-value="${#authentication.name}"
+                    <svg th:if="${#strings.isEmpty(account?.profileImage)}" th:data-jdenticon-value="${#authentication.name}"
                          width="24" height="24" class="rounded border bg-light"></svg>
+                    <img th:if="${!#strings.isEmpty(account?.profileImage)}" th:src="${account.profileImage}"
+                         width="24" height="24" class="rounded border"/>
                 </a>
                 <div class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="userDropdown">
                     <h6 class="dropdown-header">
@@ -79,6 +85,15 @@
         <small class="mb-3 text-muted text-center">&copy; 2020</small>
     </div>
 </footer>
+
+<div th:fragment="settings-menu (currentMenu)" class="list-group">
+        <a href="#" th:href="@{/settings/profile}" class="list-group-item list-group-item-action active" th:clssappend="${currentMenu == 'profile'}? active" aria-current="true">프로필</a>
+        <a href="#" th:href="@{/settings/password}" class="list-group-item list-group-item-action" th:clssappend="${currentMenu == 'password'}? active">패스워드</a>
+        <a href="#" th:href="@{/settings/notifications}" class="list-group-item list-group-item-action" th:clssappend="${currentMenu == 'notifications'}? active">알림</a>
+        <a href="#" th:href="@{/settings/tags}" class="list-group-item list-group-item-action" th:clssappend="${currentMenu == 'tags'}? active">관심 주제</a>
+        <a href="#" th:href="@{/settings/zones}" class="list-group-item list-group-item-action" th:clssappend="${currentMenu == 'zones'}? active">활동 지역</a>
+        <a href="#" th:href="@{/settings/account}" class="list-group-item list-group-item-action list-group-item-danger" th:clssappend="${currentMenu == 'account'}? active">계정</a>
+</div>
 
 <script type="application/javascript" th:fragment="form-validation">
     (function (){
