@@ -1,9 +1,12 @@
 package com.example.demo.domain;
 
+import com.example.demo.Zone.Zone;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -49,15 +52,21 @@ public class Account {
 
     private boolean studyCreateByEmail;
 
-    private boolean studyCreateByWeb;
+    private boolean studyCreateByWeb = true;
 
     private boolean studyEnrollmentResultByEmail;
 
-    private boolean studyEnrollmentResultByWeb;
+    private boolean studyEnrollmentResultByWeb = true;
 
     private boolean studyUpdatedByEmail;
 
-    private boolean studyUpdateByWeb;
+    private boolean studyUpdateByWeb = true;
+
+    @ManyToMany
+    private Set<Tag> tags = new HashSet<>();;
+
+    @ManyToMany
+    private Set<Zone> zones = new HashSet<>();
 
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();

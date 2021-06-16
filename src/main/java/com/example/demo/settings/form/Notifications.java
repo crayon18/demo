@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class Notifications {
 
-    private boolean studyCreatedByEmail;
+    private boolean studyCreateByEmail;
 
-    private boolean studyCreatedByWeb;
+    private boolean studyCreateByWeb;
 
     private boolean studyEnrollmentResultByEmail;
 
@@ -17,7 +17,7 @@ public class Notifications {
 
     private boolean studyUpdatedByEmail;
 
-    private boolean studyUpdatedByWeb;
+    private boolean studyUpdateByWeb;
 
 }
 
