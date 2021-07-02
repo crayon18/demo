@@ -1,5 +1,6 @@
 package com.example.demo.Zone;
 
+import com.example.demo.domain.Zone;
 import lombok.Data;
 
 @Data

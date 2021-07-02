@@ -6,7 +6,7 @@ import com.example.demo.account.AccountService;
 import com.example.demo.account.CurrentUser;
 import com.example.demo.domain.Account;
 import com.example.demo.domain.Tag;
-import com.example.demo.Zone.Zone;
+import com.example.demo.domain.Zone;
 import com.example.demo.settings.form.*;
 import com.example.demo.settings.validator.NicknameValidator;
 import com.example.demo.settings.validator.PasswordFormValidator;

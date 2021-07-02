@@ -1,4 +1,4 @@
-package com.example.demo.Zone;
+package com.example.demo.domain;
 
 import lombok.*;
 
